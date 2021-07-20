@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import CategoryBlock from '../components/CategoryBlock'
+import {BlockNames} from "./constants/blocks-names";
 
 export default function Home(props) {
   return (
@@ -10,31 +11,75 @@ export default function Home(props) {
         <title>Меню Мушля</title>
         <meta name="description" content="QR меню кафе Мушля Житомир" />
         <link rel="icon" href="/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300&display=swap" rel="stylesheet"/>
       </Head>
 
       <main className={styles.main}>
-        <h3>Мушля</h3>
-        <div>
-          {props.blocks.map(v => {
-            return (
-              <CategoryBlock key={v.id} {...v}/>
-            )
-          })}
-        </div>        
-      </main>
+        <Image
+            className={styles.logo}
+            priority={true}
+            src="/logo.svg"
+            alt="Мушля"
+            width={350}
+            height={80}
+        />
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <div>
+            {
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.oysterBar)})}/>
+            }
+            {
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.cooledSeafood)})}/>
+            }
+            {/*{*/}
+                {/*<CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>*/}
+            {/*}*/}
+            {
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.grilledSeafood), className: styles.cardBlockBordered})}/>
+            }
+            {
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.plato), className: styles.filled})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.mussels), className: ([styles.filled, styles.blue].join(' '))})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.sandwiches)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.bowls), className: styles.cardBlockBordered})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.salad)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.steaks)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.soups)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.rolls), className: ([styles.filled, styles.blue].join(' '))})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.deserts), className: styles.filled})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksGlass)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksBottle)})}/>
+            }
+            {
+                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.softDrinks)})}/>
+            }
+            {
+              console.log(props)
+            }
+        </div>
+      </main>
     </div>
   )
 }
