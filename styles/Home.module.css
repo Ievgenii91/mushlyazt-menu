@@ -18,6 +18,45 @@
   align-items: center;
 }
 
+.backgroundContainer {
+  background-image: url("../public/oyster.svg"), url("../public/shrimp.svg"), url("../public/fish.svg"), url("../public/bulot.svg");
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 100% 100px, 100% 1710px, 50% 1400px;
+}
+
+.backgroundOyster{
+  background-image:url("../public/oyster.svg");
+  background-repeat: no-repeat;
+  background-position: 90% 10%;
+}
+
+.backgroundShrimp{
+  background-image:url("../public/shrimp.svg"), url("../public/bended.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: 90% 10%, 0 100%;
+  background-size: 200px, 35px;
+}
+
+.backgroundMussels{
+  background-image:url("../public/mussels.svg");
+  background-repeat: no-repeat;
+  background-position: 20% 80%;
+  background-size: 200px;
+}
+
+.backgroundFish{
+  background-image:url("../public/fish.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.backgroundBulot{
+  background-image:url("../public/bulot.svg");
+  background-repeat: no-repeat;
+  background-position: 90% 10%;
+}
+
 .footer {
   width: 100%;
   height: 100px;
@@ -202,12 +241,12 @@
 
 .filled{
   border: none;
-  background: #f2e7e2;
+  background-color: #f2e7e2;
   border-radius: 30px;
 }
 
 .filled.blue{
-  background: #e4eaf0;
+  background-color: #e4eaf0;
 }
 
 .filled .cardBlockHeader {

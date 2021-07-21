@@ -29,7 +29,7 @@ export default function Home(props) {
 
         <div>
             {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.oysterBar)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.oysterBar), className: styles.backgroundOyster})}/>
             }
             {
               <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.cooledSeafood)})}/>
@@ -41,43 +41,43 @@ export default function Home(props) {
               <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.grilledSeafood), className: styles.cardBlockBordered})}/>
             }
             {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.plato), className: styles.filled})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.plato), className: ([styles.filled, styles.backgroundShrimp].join(' '))})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.mussels), className: ([styles.filled, styles.blue].join(' '))})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.mussels), className: ([styles.filled, styles.blue, styles.backgroundMussels].join(' '))})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.sandwiches)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.sandwiches), className: ([styles.backgroundFish].join(' '))})}/>
             }
             {
-                <Additionals/>
+              <Additionals/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.bowls), className: styles.cardBlockBordered})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.bowls), className: styles.cardBlockBordered})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.salad)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.salad)})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.steaks)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.steaks)})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.soups)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.soups)})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.rolls), className: ([styles.filled, styles.blue].join(' '))})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.rolls), className: ([styles.filled, styles.blue].join(' '))})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.deserts), className: styles.filled})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.deserts), className: styles.filled})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksGlass)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksGlass), className: styles.backgroundBulot})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksBottle)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksBottle)})}/>
             }
             {
-                <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.softDrinks)})}/>
+              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.softDrinks)})}/>
             }
             {
               console.log(props)
