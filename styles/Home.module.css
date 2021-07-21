@@ -1,3 +1,5 @@
+
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -8,12 +10,51 @@
 }
 
 .main {
-  padding: 5rem 0;
+  padding: 2rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.backgroundContainer {
+  background-image: url("../public/oyster.svg"), url("../public/shrimp.svg"), url("../public/fish.svg"), url("../public/bulot.svg");
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 100% 100px, 100% 1710px, 50% 1400px;
+}
+
+.backgroundOyster{
+  background-image:url("../public/oyster.svg");
+  background-repeat: no-repeat;
+  background-position: 90% 10%;
+}
+
+.backgroundShrimp{
+  background-image:url("../public/shrimp.svg"), url("../public/bended.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: 90% 10%, 0 100%;
+  background-size: 200px, 35px;
+}
+
+.backgroundMussels{
+  background-image:url("../public/mussels.svg");
+  background-repeat: no-repeat;
+  background-position: 20% 80%;
+  background-size: 200px;
+}
+
+.backgroundFish{
+  background-image:url("../public/fish.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.backgroundBulot{
+  background-image:url("../public/bulot.svg");
+  background-repeat: no-repeat;
+  background-position: 90% 10%;
 }
 
 .footer {
@@ -112,9 +153,148 @@
   margin-left: 0.5rem;
 }
 
+.cardBlock{
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardBlock h3 {
+  color: #00517c;
+  text-transform: uppercase;
+  background: #ffffff;
+  font-size: 22px;
+}
+
+.cardBlock > div{
+  width: 100%;
+}
+
+.cardBlockBordered{
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 30px;
+  border: 3px solid #0092bd;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardBlockBordered h3 {
+  color: #00517c;
+  text-transform: uppercase;
+  background: #ffffff;
+}
+
+.cardBlock .cardBlockHeader {
+  margin: -35px 0 10px 0;
+  padding: 0 20px;
+  text-align: center;
+  width: fit-content;
+}
+
+.cardBlockHeader h3 {
+  margin: 0 0 10px 0;
+  padding: 0 20px;
+  border-radius: 20px;
+}
+
+.cardBlockHeaderDescription {
+  font-size: 12px;
+  margin: 0 auto;
+  max-width: 250px;
+}
+
+.product{
+  display: flex;
+  justify-content: space-between;
+  color: #00517c;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #d8d6d6;
+}
+
+.productName{
+  width: 70%;
+  font-size: 14px;
+}
+
+.price{
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 14px;
+  height: 16px;
+  display: flex;
+  align-self: center;
+  font-weight: bold;
+}
+
+.productDescription{
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.filled{
+  border: none;
+  background-color: #f2e7e2;
+  border-radius: 30px;
+}
+
+.filled.blue{
+  background-color: #e4eaf0;
+}
+
+.filled .cardBlockHeader {
+  margin: -22px 0 10px 0;
+}
+
+.filled .cardBlockHeader h3{
+  border-radius: 0 0 20px 20px;
+}
+
+.additionals{
+  display: flex;
+  align-items: center;
+  background: #e4eaf0;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.additionals > div {
+  display: flex;
+  padding: 0 5px;
+}
+
+.additionalsCategory h3{
+  color: #00517c;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.additionalsCategory > div{
+  display: flex;
+  padding: 0 5px;
+  flex-direction: column;
+}
+
+.additionalsHeader{
+  text-transform: uppercase;
+  color: #00517c;
+  font-size: 22px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
+
