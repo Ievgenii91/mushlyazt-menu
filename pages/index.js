@@ -3,89 +3,174 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import CategoryBlock from '../components/CategoryBlock'
 import Additionals from '../components/Additionals'
-import {BlockNames} from "./constants/blocks-names";
+import { BlockNames } from '../constants/blocks-names';
 
 export default function Home(props) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Меню Мушля</title>
-        <meta name="description" content="QR меню кафе Мушля Житомир" />
-        <link rel="icon" href="/favicon.ico" />
-          <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300&display=swap" rel="stylesheet"/>
-      </Head>
+		<div className={styles.container}>
+			<Head>
+				<title>Меню Мушля</title>
+				<meta name="description" content="QR меню кафе Мушля Житомир" />
+				<link rel="icon" href="/favicon.ico" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+				<link
+					href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300&display=swap"
+					rel="stylesheet"
+				/>
+			</Head>
 
-      <main className={styles.main}>
-        <Image
-            className={styles.logo}
-            priority={true}
-            src="/logo.svg"
-            alt="Мушля"
-            width={350}
-            height={80}
-        />
+			<main className={styles.main}>
+				<Image
+					className={styles.logo}
+					priority={true}
+					src="/logo.svg"
+					alt="Мушля"
+					width={350}
+					height={80}
+				/>
 
-        <div>
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.oysterBar), className: styles.backgroundOyster})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.cooledSeafood)})}/>
-            }
-            {/*{*/}
-                {/*<CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>*/}
-            {/*}*/}
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.grilledSeafood), className: styles.cardBlockBordered})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.plato), className: ([styles.filled, styles.backgroundShrimp].join(' '))})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.mussels), className: ([styles.filled, styles.blue, styles.backgroundMussels].join(' '))})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.sandwiches), className: ([styles.backgroundFish].join(' '))})}/>
-            }
-            {
-              <Additionals/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.bowls), className: styles.cardBlockBordered})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.salad)})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.steaks)})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.soups)})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.rolls), className: ([styles.filled, styles.blue].join(' '))})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.deserts), className: styles.filled})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksGlass), className: styles.backgroundBulot})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.drinksBottle)})}/>
-            }
-            {
-              <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.softDrinks)})}/>
-            }
-            {
-              console.log(props)
-            }
-        </div>
-      </main>
-    </div>
-  )
+				<div>
+					<CategoryBlock
+						key={BlockNames.oysterBar}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.oysterBar
+							),
+							className: styles.backgroundOyster,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.cooledSeafood}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.cooledSeafood
+							),
+						}}
+					/>
+					{/*<CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>*/}
+					{/*}*/}
+					<CategoryBlock
+						key={BlockNames.grilledSeafood}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.grilledSeafood
+							),
+							className: styles.cardBlockBordered,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.plato}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.plato
+							),
+							className: [styles.filled, styles.backgroundShrimp].join(' '),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.mussels}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.mussels
+							),
+							className: [
+								styles.filled,
+								styles.blue,
+								styles.backgroundMussels,
+							].join(' '),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.sandwiches}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.sandwiches
+							),
+							className: [styles.backgroundFish].join(' '),
+						}}
+					/>
+					<Additionals />
+					<CategoryBlock
+						key={BlockNames.bowls}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.bowls
+							),
+							className: styles.cardBlockBordered,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.salad}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.salad
+							),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.steaks}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.steaks
+							),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.soups}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.soups
+							),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.rolls}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.rolls
+							),
+							className: [styles.filled, styles.blue].join(' '),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.deserts}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.deserts
+							),
+							className: styles.filled,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.drinksGlass}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.drinksGlass
+							),
+							className: styles.backgroundBulot,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.drinksBottle}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.drinksBottle
+							),
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.softDrinks}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.softDrinks
+							),
+						}}
+					/>
+				</div>
+			</main>
+		</div>
+	);
 }
 
 export async function getStaticProps(context) {
