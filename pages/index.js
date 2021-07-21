@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import CategoryBlock from '../components/CategoryBlock'
+import Additionals from '../components/Additionals'
 import {BlockNames} from "./constants/blocks-names";
 
 export default function Home(props) {
@@ -47,6 +48,9 @@ export default function Home(props) {
             }
             {
                 <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.sandwiches)})}/>
+            }
+            {
+                <Additionals/>
             }
             {
                 <CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.bowls), className: styles.cardBlockBordered})}/>

@@ -1,3 +1,5 @@
+
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -190,6 +192,7 @@
   height: 16px;
   display: flex;
   align-self: center;
+  font-weight: bold;
 }
 
 .productDescription{
@@ -213,6 +216,40 @@
 
 .filled .cardBlockHeader h3{
   border-radius: 0 0 20px 20px;
+}
+
+.additionals{
+  display: flex;
+  align-items: center;
+  background: #e4eaf0;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.additionals > div {
+  display: flex;
+  padding: 0 5px;
+}
+
+.additionalsCategory h3{
+  color: #00517c;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.additionalsCategory > div{
+  display: flex;
+  padding: 0 5px;
+  flex-direction: column;
+}
+
+.additionalsHeader{
+  text-transform: uppercase;
+  color: #00517c;
+  font-size: 22px;
 }
 
 @media (max-width: 600px) {
