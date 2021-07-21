@@ -6,13 +6,13 @@ export const BlockNames = {
    bowls: 'Боули',
    plato: 'Плато',
    mussels: 'Мідії',
-    sandwiches: 'Бургери та сендвічі',
-    salad: 'Салат',
-    steaks: 'Стейки із риби',
-    soups: 'Супи',
-    rolls: 'Роли',
-    deserts: 'Десерти',
-    drinksGlass: 'Напої келихами',
-    drinksBottle: 'Напої пляшками',
-    softDrinks: 'Безалкогольні напої'
+   sandwiches: 'Бургери та сендвічі',
+   salad: 'Салат',
+   steaks: 'Стейки із риби',
+   soups: 'Супи',
+   rolls: 'Роли',
+   deserts: 'Десерти',
+   drinksGlass: 'Напої келихами',
+   drinksBottle: 'Напої пляшками',
+   softDrinks: 'Безалкогольні напої'
 };
