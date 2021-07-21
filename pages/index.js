@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import CategoryBlock from '../components/CategoryBlock'
 import Additionals from '../components/Additionals'
-import {BlockNames} from "./constants/blocks-names";
+import {BlockNames} from "../constants/blocks-names";
 
 export default function Home(props) {
   return (
