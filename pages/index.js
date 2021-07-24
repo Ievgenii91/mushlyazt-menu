@@ -176,8 +176,8 @@ export default function Home(props) {
 export async function getStaticProps(context) {
   const clientId = process.env.CLIENT_ID;
   const host = process.env.HOST;
-  const res = await fetch(`https://${host}/api/category?clientId=${clientId}`)
-  const productsRes = await fetch(`https://${host}/api/product/all?clientId=${clientId}`)
+  const res = await fetch(`https://${host}/api/v1/categories?clientId=${clientId}`)
+  const productsRes = await fetch(`https://${host}/api/v1/products?clientId=${clientId}`)
   const { data: categories } = await res.json()
   const { data: products } = await productsRes.json()
 
@@ -193,7 +193,8 @@ export async function getStaticProps(context) {
     blocks.push({
       id: cat._id,
       blockName: cat.name,
-      products: products.filter(v => v.category === cat._id)
+      products: products.filter(v => v.category === cat._id),
+			subCategories: cat.children,
     })
   })
 

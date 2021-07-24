@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 
-export default function CategoryBlock({ blockName, products, description, className }) {
+export default function CategoryBlock({ blockName, products, description, className, subCategories }) {
+	console.log(subCategories);
 	return (
 		<div className={[styles.cardBlock, className].join(' ')}>
 			<div className={styles.cardBlockHeader}>
