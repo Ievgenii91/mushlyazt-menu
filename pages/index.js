@@ -211,8 +211,8 @@ export default function Home(props) {
 export async function getStaticProps(context) {
   const clientId = process.env.CLIENT_ID;
   const host = process.env.HOST;
-  const res = await fetch(`http://${host}/api/v1/categories?clientId=${clientId}`)
-  const productsRes = await fetch(`http://${host}/api/v1/products?clientId=${clientId}`)
+  const res = await fetch(`https://${host}/api/v1/categories?clientId=${clientId}`)
+  const productsRes = await fetch(`https://${host}/api/v1/products?clientId=${clientId}`)
   const { data: categories } = await res.json()
   const { data: products } = await productsRes.json()
 
