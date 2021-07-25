@@ -1,7 +1,18 @@
 import styles from '../styles/Home.module.css'
 
 export default function CategoryBlock({ blockName, products, description, className, subCategories }) {
-	console.log(subCategories);
+	const hasSubCategories = !!subCategories.length;
+	const product = (v) => (
+		<div className={styles.product} key={v._id}>
+			<div className={styles.productName}>
+				{v.name}
+				<div className={styles.productDescription}>{v.description}</div>
+			</div>
+			<div className={styles.price}>
+				{v.price} ₴
+			</div>
+		</div>
+	)
 	return (
 		<div className={[styles.cardBlock, className].join(' ')}>
 			<div className={styles.cardBlockHeader}>
@@ -9,16 +20,23 @@ export default function CategoryBlock({ blockName, products, description, classN
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>
 			</div>
 			<div>
-				{products.map((v) => {
-					return <div className={styles.product} key={v._id}>
-								<div className={styles.productName}>
-									{v.name}
-									<div className={styles.productDescription}>{v.description}</div>
-								</div>
-								<div className={styles.price}>
-									{v.price} ₴
-								</div>
-							</div>;
+				{hasSubCategories &&
+					subCategories.map((v) => {
+						return (
+							<div key={v}>
+								<h4>{v}</h4>
+								{products
+									.filter((p) => {
+										return p.subCategory === v;
+									})
+									.map((data) => {
+										return product(data);
+									})}
+							</div>
+						);
+					})}
+				{!hasSubCategories && products.map((v) => {
+					return product(v);
 				})}
 			</div>
 		</div>

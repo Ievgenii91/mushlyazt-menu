@@ -4,8 +4,43 @@ import styles from '../styles/Home.module.css'
 import CategoryBlock from '../components/CategoryBlock'
 import Additionals from '../components/Additionals'
 import { BlockNames } from '../constants/blocks-names';
+import useSWR from 'swr';
+
+const trackEndpoint = '/api/user?zone=';
+const QR_SCAN_FREQUENCY_TIMEOUT = 60000; // 1 min
+
+const getData = async () => {
+	const urlParams = new URLSearchParams(window.location.search);
+	const storage = window.localStorage;
+	const zone = urlParams.get('zone');
+
+	const fetchData = async () => {
+		storage.setItem('lastUpdated', new Date().toISOString());
+		const response = await fetch(trackEndpoint + zone);
+		return await response.json();
+	};
+
+	let lastUpdated = storage.getItem('lastUpdated');
+	if (lastUpdated) {
+		let currentTime = new Date(new Date().toISOString()).getTime();
+		if (
+			currentTime - new Date(lastUpdated).getTime() >
+			QR_SCAN_FREQUENCY_TIMEOUT
+		) {
+			return await fetchData();
+		} else {
+			return new Promise.resolve(false);
+		}
+	} else {
+		return await fetchData();
+	}
+};
 
 export default function Home(props) {
+	const { data, error } = useSWR(trackEndpoint, getData, {
+		dedupingInterval: 60000,
+	});
+	
   return (
 		<div className={styles.container}>
 			<Head>
