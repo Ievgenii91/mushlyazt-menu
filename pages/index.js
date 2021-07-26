@@ -208,7 +208,7 @@ export default function Home(props) {
 	);
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps() {
   const clientId = process.env.CLIENT_ID;
   const host = process.env.HOST;
   const res = await fetch(`https://${host}/api/v1/categories?clientId=${clientId}`)
@@ -228,7 +228,8 @@ export async function getStaticProps(context) {
     blocks.push({
       id: cat._id,
       blockName: cat.name,
-      products: products.filter(v => v.category === cat._id),
+			description: cat.description,
+      products: products.filter(v => v.available && v.category === cat._id).sort((a, b) => a.price - b.price),
 			subCategories: cat.children,
     })
   })
