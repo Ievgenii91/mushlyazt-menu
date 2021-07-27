@@ -289,6 +289,21 @@
   margin-bottom: 5px;
 }
 
+.dot{
+  margin: 0 5px;
+}
+
+.instagram{
+  display: flex;
+  align-items: center;
+  color: #0092bd;
+}
+
+.instagram span{
+  position: relative;
+  top: -1px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

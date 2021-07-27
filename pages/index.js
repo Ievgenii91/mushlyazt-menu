@@ -64,6 +64,16 @@ export default function Home(props) {
 					width={350}
 					height={80}
 				/>
+				<a href={'https://www.instagram.com/mushlya.zt/'} target={'_blank'} className={styles.instagram}>
+                    <Image
+                        priority={true}
+                        src="/instagram.svg"
+                        alt="Мушля"
+                        width={16}
+                        height={16}
+                    />
+					<span>mushlya.zt</span>
+				</a>
 
 				<div>
 					<CategoryBlock
@@ -165,7 +175,7 @@ export default function Home(props) {
 							...props.blocks.find(
 								(block) => block.blockName === BlockNames.rolls
 							),
-							className: [styles.filled, styles.blue].join(' '),
+							className: [styles.filled, styles.blue, styles.backgroundFish].join(' '),
 						}}
 					/>
 					<CategoryBlock

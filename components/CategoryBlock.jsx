@@ -9,6 +9,7 @@ export default function CategoryBlock({ blockName, products, description, classN
 				<div className={styles.productDescription}>{v.description}</div>
 			</div>
 			<div className={styles.price}>
+				{v.additionalText ? <span>{v.additionalText} <span className={styles.dot}>•</span></span> : null}
 				{v.price} ₴
 			</div>
 		</div>
