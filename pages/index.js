@@ -93,8 +93,7 @@ export default function Home(props) {
 							),
 						}}
 					/>
-					{/*<CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>*/}
-					{/*}*/}
+					<CategoryBlock {...({...props.blocks.find(block => block.blockName === BlockNames.tartar), className: styles.cardBlock})}/>
 					<CategoryBlock
 						key={BlockNames.grilledSeafood}
 						{...{
@@ -194,6 +193,15 @@ export default function Home(props) {
 								(block) => block.blockName === BlockNames.drinksGlass
 							),
 							className: styles.backgroundBulot,
+						}}
+					/>
+					<CategoryBlock
+						key={BlockNames.beer}
+						{...{
+							...props.blocks.find(
+								(block) => block.blockName === BlockNames.beer
+							),
+							className: styles.filled,
 						}}
 					/>
 					<CategoryBlock

@@ -13,6 +13,7 @@ export const BlockNames = {
    rolls: 'Роли',
    deserts: 'Десерти',
    drinksGlass: 'Напої келихами',
+   beer: 'Пиво',
    drinksBottle: 'Напої пляшками',
    softDrinks: 'Безалкогольні напої'
 };
