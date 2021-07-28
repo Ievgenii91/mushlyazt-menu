@@ -64,7 +64,7 @@ export default function Home(props) {
 					width={350}
 					height={80}
 				/>
-				<a href={'https://www.instagram.com/mushlya.zt/'} target={'_blank'} className={styles.instagram}>
+				<a href={'https://www.instagram.com/mushlya.zt/'} target={'_blank'} rel="noreferrer" className={styles.instagram}>
                     <Image
                         priority={true}
                         src="/instagram.svg"
