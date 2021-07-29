@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 
 export default function CategoryBlock({ blockName, products, description, className, subCategories }) {
-	const hasSubCategories = !!subCategories.length;
+	const hasSubCategories = !!subCategories && !!subCategories.length;
 	const product = (v) => (
 		<div className={styles.product} key={v._id}>
 			<div className={styles.productName}>
