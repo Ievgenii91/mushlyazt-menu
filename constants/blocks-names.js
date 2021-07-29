@@ -5,6 +5,7 @@ export const BlockNames = {
    grilledSeafood: 'Морепродукти GRILL',
    bowls: 'Боули',
    plato: 'Плато',
+   seafoodPlato: 'Seafood плато',
    mussels: 'Мідії',
    sandwiches: 'Бургери та сендвічі',
    salad: 'Салат',
@@ -15,5 +16,7 @@ export const BlockNames = {
    drinksGlass: 'Напої келихами',
    beer: 'Пиво',
    drinksBottle: 'Напої пляшками',
-   softDrinks: 'Безалкогольні напої'
+   softDrinks: 'Безалкогольні напої',
+   breakfast: 'Страви на сніданок',
+   sweetBreakfast: 'Солоденького?'
 };
