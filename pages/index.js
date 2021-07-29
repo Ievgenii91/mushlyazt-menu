@@ -291,7 +291,7 @@ export default function Home(props) {
 	);
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const clientId = process.env.CLIENT_ID;
   const host = process.env.HOST;
   const res = await fetch(`https://${host}/api/v1/categories?clientId=${clientId}`)
