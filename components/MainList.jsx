@@ -9,7 +9,7 @@ export default function MainList({ blocks, hour }) {
 	const getBlock = useGetBlock(blocks);
 
 	return (
-		<section key={'breakfast-2'}>
+		<section>
 			{hour <= 8 || hour <= 12 ? (
 				<h1 className={styles.heading}>Основне меню</h1>
 			) : null}

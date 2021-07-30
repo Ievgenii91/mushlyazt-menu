@@ -7,6 +7,7 @@ import styles from '../styles/Home.module.css';
 
 const trackEndpoint = '/api/user?zone=';
 const QR_SCAN_FREQUENCY_TIMEOUT = 60000; // 1 min
+const MAX_BREAKFAST_HOUR = 13;
 
 const getData = async () => {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -41,18 +42,7 @@ export default function Home({ blocks }) {
 	});
 
 	const hour = new Date().getHours();
-
-	const getSections = (hour) => {
-		return [
-			<Breakfasts key="brk" blocks={blocks} />,
-			<MainList key="main" blocks={blocks} hour={hour} />
-		];
-	}
-
-	const render = () => {
-		const sections = getSections(hour);
-		return hour <= 8 || hour <= 12 ? sections : sections.reverse();
-	}
+	const breakfaskFirst = hour <= 8 || hour <= MAX_BREAKFAST_HOUR
 
 	return (
 		<div className={styles.container}>
@@ -99,7 +89,10 @@ export default function Home({ blocks }) {
 						<span>mushlya.zt</span>
 					</a>
 				</header>
-				{render()}
+				
+				{ breakfaskFirst && <Breakfasts blocks={blocks} /> }
+				<MainList blocks={blocks} hour={hour} />
+				{ !breakfaskFirst && <Breakfasts blocks={blocks} /> }
 			</main>
 		</div>
 	);

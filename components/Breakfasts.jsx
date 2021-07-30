@@ -11,7 +11,7 @@ export default function Breakfasts({ blocks }) {
   const getBlock = useGetBlock(blocks);
 
   return (
-		<section key={'breakfast-1'} className={styles.breakfastSection}>
+		<section className={styles.breakfastSection}>
 			<h1 className={classNames(styles.heading, styles.breakFastHeader)}>Сніданки</h1>
 			<InfoBlock message="Щоранку з 9:00 до 13:00 готуємо круті сніданки з морепродуктами та ігристим." />
 			<CustomBlock className={classNames(styles.filled, styles.blue)} />
