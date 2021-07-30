@@ -1,6 +1,12 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
-export default function CategoryBlock({ blockName, products, description, className, subCategories }) {
+export default function CategoryBlock({
+	blockName,
+	products,
+	description,
+	className,
+	subCategories,
+}) {
 	const hasSubCategories = !!subCategories && !!subCategories.length;
 	const product = (v) => (
 		<div className={styles.product} key={v._id}>
@@ -9,11 +15,15 @@ export default function CategoryBlock({ blockName, products, description, classN
 				<div className={styles.productDescription}>{v.description}</div>
 			</div>
 			<div className={styles.price}>
-				{v.additionalText ? <span>{v.additionalText} <span className={styles.dot}>•</span></span> : null}
+				{v.additionalText ? (
+					<span>
+						{v.additionalText} <span className={styles.dot}>•</span>
+					</span>
+				) : null}
 				{v.price} ₴
 			</div>
 		</div>
-	)
+	);
 	return (
 		<div className={[styles.cardBlock, className].join(' ')}>
 			<div className={styles.cardBlockHeader}>
@@ -36,9 +46,10 @@ export default function CategoryBlock({ blockName, products, description, classN
 							</div>
 						);
 					})}
-				{!hasSubCategories && products.map((v) => {
-					return product(v);
-				})}
+				{!hasSubCategories &&
+					products.map((v) => {
+						return product(v);
+					})}
 			</div>
 		</div>
 	);
