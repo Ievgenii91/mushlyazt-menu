@@ -5,14 +5,12 @@ import CategoryBlock from './CategoryBlock';
 import classNames from 'classnames';
 import Additionals from './Additionals';
 
-export default function MainList({ blocks, hour }) {
+export default function MainList({ blocks, showMainLabel }) {
 	const getBlock = useGetBlock(blocks);
 
 	return (
 		<section>
-			{hour <= 8 || hour <= 12 ? (
-				<h1 className={styles.heading}>Основне меню</h1>
-			) : null}
+			{ showMainLabel && <h1 className={styles.heading}>Основне меню</h1>}
 			<CategoryBlock
 				key={BlockNames.oysterBar}
 				className={styles.backgroundOyster}

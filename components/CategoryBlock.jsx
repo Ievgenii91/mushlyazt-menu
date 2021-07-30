@@ -1,4 +1,5 @@
 import styles from '../styles/Home.module.css';
+import classNames from 'classnames';
 
 export default function CategoryBlock({
 	blockName,
@@ -25,7 +26,7 @@ export default function CategoryBlock({
 		</div>
 	);
 	return (
-		<div className={[styles.cardBlock, className].join(' ')}>
+		<div className={classNames(styles.cardBlock, className)}>
 			<div className={styles.cardBlockHeader}>
 				<h3>{blockName}</h3>
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>
@@ -37,19 +38,13 @@ export default function CategoryBlock({
 							<div key={v}>
 								<h4>{v}</h4>
 								{products
-									.filter((p) => {
-										return p.subCategory === v;
-									})
-									.map((data) => {
-										return product(data);
-									})}
+									.filter((p) => p.subCategory === v)
+									.map(product)}
 							</div>
 						);
 					})}
 				{!hasSubCategories &&
-					products.map((v) => {
-						return product(v);
-					})}
+					products.map(product)}
 			</div>
 		</div>
 	);

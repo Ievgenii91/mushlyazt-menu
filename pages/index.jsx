@@ -37,7 +37,7 @@ const getData = async () => {
 };
 
 export default function Home({ blocks }) {
-	useSWR(trackEndpoint, getData, {
+	const data = useSWR(trackEndpoint, getData, {
 		dedupingInterval: 60000,
 	});
 
@@ -91,7 +91,7 @@ export default function Home({ blocks }) {
 				</header>
 				
 				{ breakfaskFirst && <Breakfasts blocks={blocks} /> }
-				<MainList blocks={blocks} hour={hour} />
+				<MainList blocks={blocks} showMainLabel={breakfaskFirst} />
 				{ !breakfaskFirst && <Breakfasts blocks={blocks} /> }
 			</main>
 		</div>
