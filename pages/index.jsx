@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Breakfasts from '../components/Breakfasts';
@@ -41,8 +42,12 @@ export default function Home({ blocks }) {
 		dedupingInterval: 60000,
 	});
 
-	const hour = new Date().getHours();
-	const breakfaskFirst = hour <= 8 || hour <= MAX_BREAKFAST_HOUR
+	const [breakfaskFirst, setBreakfaskFirst] = useState(false);
+
+	useEffect(() => {
+		const hour = new Date().getHours();
+		setBreakfaskFirst(hour <= 8 || hour <= MAX_BREAKFAST_HOUR);
+	}, []);
 
 	return (
 		<div className={styles.container}>
