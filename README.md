@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Add .env.local file to your project with following variables
+```bash
+CLIENT_ID={your institution id from admin panel}
+HOST={horeca api server} # run this https://github.com/Ievgenii91/horeca-admin-api-server
+MONGODB_ATLAS_CLUSTER_URI={your mongodb database URI}
+```
+Then, run the development server:
 
 ```bash
 npm run dev
