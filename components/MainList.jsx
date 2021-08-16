@@ -56,6 +56,7 @@ export default function MainList({ blocks, showMainLabel }) {
 				{...getBlock(BlockNames.bowls)}
 			/>
 			<CategoryBlock key={BlockNames.salad} {...getBlock(BlockNames.salad)} />
+			<CategoryBlock key={BlockNames.avokadoSalad} {...getBlock(BlockNames.avokadoSalad)} />
 			<CategoryBlock key={BlockNames.steaks} {...getBlock(BlockNames.steaks)} />
 			<CategoryBlock key={BlockNames.soups} {...getBlock(BlockNames.soups)} />
 			<CategoryBlock
