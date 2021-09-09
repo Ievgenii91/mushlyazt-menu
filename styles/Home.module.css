@@ -198,6 +198,21 @@
   align-items: center;
 }
 
+.alkoBlock {
+  align-items: normal;
+  background-position: 50% 50%;
+  padding: 0;
+  background-size: contain;
+}
+.alkoBlock .price span {
+  font-weight: normal;
+  margin-right: 7px;
+  font-size: small;
+}
+.alkoBlock .price span .dot {
+  display: none;
+}
+
 .cardBlockBordered h3 {
   color: #00517c;
   text-transform: uppercase;

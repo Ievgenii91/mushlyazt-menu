@@ -10,7 +10,7 @@ export default function MainList({ blocks, showMainLabel }) {
 
 	return (
 		<section>
-			{ showMainLabel && <h1 className={styles.heading}>Основне меню</h1>}
+			{showMainLabel && <h1 className={styles.heading}>Основне меню</h1>}
 			<CategoryBlock
 				key={BlockNames.oysterBar}
 				className={styles.backgroundOyster}
@@ -56,7 +56,10 @@ export default function MainList({ blocks, showMainLabel }) {
 				{...getBlock(BlockNames.bowls)}
 			/>
 			<CategoryBlock key={BlockNames.salad} {...getBlock(BlockNames.salad)} />
-			<CategoryBlock key={BlockNames.avokadoSalad} {...getBlock(BlockNames.avokadoSalad)} />
+			<CategoryBlock
+				key={BlockNames.avokadoSalad}
+				{...getBlock(BlockNames.avokadoSalad)}
+			/>
 			<CategoryBlock key={BlockNames.steaks} {...getBlock(BlockNames.steaks)} />
 			<CategoryBlock key={BlockNames.soups} {...getBlock(BlockNames.soups)} />
 			<CategoryBlock
@@ -78,6 +81,16 @@ export default function MainList({ blocks, showMainLabel }) {
 				className={styles.backgroundBulot}
 				{...getBlock(BlockNames.drinksGlass)}
 			/>
+			<div className={classNames(styles.backgroundBulot, styles.cardBlockBordered, styles.alkoBlock)}>
+				<CategoryBlock
+					key={BlockNames.shots}
+					{...getBlock(BlockNames.shots)}
+				/>
+				<CategoryBlock
+					key={BlockNames.cocktails}
+					{...getBlock(BlockNames.cocktails)}
+				/>
+			</div>
 			<CategoryBlock
 				key={BlockNames.beer}
 				className={styles.filled}

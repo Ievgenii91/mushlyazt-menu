@@ -19,5 +19,7 @@ export const BlockNames = {
    drinksBottle: 'Напої пляшками',
    softDrinks: 'Безалкогольні напої',
    breakfast: 'Страви на сніданок',
-   sweetBreakfast: 'Солоденького?'
+   sweetBreakfast: 'Солоденького?',
+   shots: 'Пий чарками',
+   cocktails: 'Коктелі'
 };
