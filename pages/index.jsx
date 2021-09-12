@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css';
 
 const trackEndpoint = '/api/user?zone=';
 const QR_SCAN_FREQUENCY_TIMEOUT = 60000; // 1 min
-const MAX_BREAKFAST_HOUR = 13;
+const MAX_BREAKFAST_HOUR = 15;
 
 const getData = async () => {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -46,7 +46,7 @@ export default function Home({ blocks }) {
 
 	useEffect(() => {
 		const hour = new Date().getHours();
-		setBreakfaskFirst(hour <= 8 || hour <= MAX_BREAKFAST_HOUR);
+		setBreakfaskFirst(hour <= 10 || hour <= MAX_BREAKFAST_HOUR);
 	}, []);
 
 	return (
