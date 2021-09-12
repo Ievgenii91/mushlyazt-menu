@@ -13,7 +13,7 @@ export default function Breakfasts({ blocks }) {
   return (
 		<section className={styles.breakfastSection}>
 			<h1 className={classNames(styles.heading, styles.breakFastHeader)}>Сніданки</h1>
-			<InfoBlock message="Щоранку з 9:00 до 13:00 готуємо круті сніданки з морепродуктами та ігристим." />
+			<InfoBlock message="Щоранку 11:00 до 15:00 готуємо круті сніданки з морепродуктами та ігристим." />
 			<CustomBlock className={classNames(styles.filled, styles.blue)} />
 			<InfoBlock message={'Твій аристократичний початок дня'} />
 			<CategoryBlock
