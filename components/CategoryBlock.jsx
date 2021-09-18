@@ -9,22 +9,31 @@ export default function CategoryBlock({
 	subCategories,
 }) {
 	const hasSubCategories = !!subCategories && !!subCategories.length;
-	const product = (v) => (
-		<div className={styles.product} key={v._id}>
-			<div className={styles.productName}>
-				{v.name}
-				<div className={styles.productDescription}>{v.description}</div>
+	
+	const product = (v) => {
+		const showCalcs = v.capacity || v.weight;
+		return (
+			<div className={styles.product} key={v._id}>
+				<div className={styles.productName}>
+					{v.name}
+					<div className={styles.productDescription}>{v.description}</div>
+				</div>
+				<div className={styles.price}>
+					{v.additionalText ? (
+						<span>
+							{v.additionalText} <span className={styles.dot}>•</span>
+						</span>
+					) : null}
+					{showCalcs && (
+						<span className={styles.capacity}>
+							{v.type === 'bar' ? `${v.capacity} мл` : `${v.weight} гр`}
+						</span>
+					)}
+					{v.price} ₴
+				</div>
 			</div>
-			<div className={styles.price}>
-				{v.additionalText ? (
-					<span>
-						{v.additionalText} <span className={styles.dot}>•</span>
-					</span>
-				) : null}
-				{v.price} ₴
-			</div>
-		</div>
-	);
+		);
+	};
 	return (
 		<div className={classNames(styles.cardBlock, className)}>
 			<div className={styles.cardBlockHeader}>
@@ -37,14 +46,11 @@ export default function CategoryBlock({
 						return (
 							<div key={v}>
 								<h4>{v}</h4>
-								{products
-									.filter((p) => p.subCategory === v)
-									.map(product)}
+								{products.filter((p) => p.subCategory === v).map(product)}
 							</div>
 						);
 					})}
-				{!hasSubCategories &&
-					products.map(product)}
+				{!hasSubCategories && products.map(product)}
 			</div>
 		</div>
 	);

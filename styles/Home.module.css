@@ -1,399 +1,398 @@
-
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+	min-height: 100vh;
+	padding: 0 0.5rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 .heading {
-  font-family: 'Open Sans';
-  color: #00517c;
-  font-size: 48px;
-  text-align: center;
+	font-family: 'Open Sans';
+	color: #00517c;
+	font-size: 48px;
+	text-align: center;
 }
 
 .main {
-  padding: 2rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
+	padding: 2rem 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
-.main header{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.main header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .backgroundContainer {
-  background-image: url("../public/oyster.svg"), url("../public/shrimp.svg"), url("../public/fish.svg"), url("../public/bulot.svg");
-  background-repeat: no-repeat;
-  background-size: 20%;
-  background-position: 100% 100px, 100% 1710px, 50% 1400px;
+	background-image: url('../public/oyster.svg'), url('../public/shrimp.svg'),
+		url('../public/fish.svg'), url('../public/bulot.svg');
+	background-repeat: no-repeat;
+	background-size: 20%;
+	background-position: 100% 100px, 100% 1710px, 50% 1400px;
 }
 
-.backgroundOyster{
-  background-image:url("../public/oyster.svg");
-  background-repeat: no-repeat;
-  background-position: 90% 10%;
+.backgroundOyster {
+	background-image: url('../public/oyster.svg');
+	background-repeat: no-repeat;
+	background-position: 90% 10%;
 }
 
-.backgroundShrimp{
-  background-image:url("../public/shrimp.svg"), url("../public/bended.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: 90% 10%, 0 100%;
-  background-size: 200px, 35px;
+.backgroundShrimp {
+	background-image: url('../public/shrimp.svg'), url('../public/bended.svg');
+	background-repeat: no-repeat, no-repeat;
+	background-position: 90% 10%, 0 100%;
+	background-size: 200px, 35px;
 }
 
-.backgroundMussels{
-  background-image:url("../public/mussels.svg");
-  background-repeat: no-repeat;
-  background-position: 20% 80%;
-  background-size: 200px;
+.backgroundMussels {
+	background-image: url('../public/mussels.svg');
+	background-repeat: no-repeat;
+	background-position: 20% 80%;
+	background-size: 200px;
 }
 
-.backgroundFish{
-  background-image:url("../public/fish.svg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+.backgroundFish {
+	background-image: url('../public/fish.svg');
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
 }
 
-.backgroundBulot{
-  background-image:url("../public/bulot.svg");
-  background-repeat: no-repeat;
-  background-position: 90% 10%;
+.backgroundBulot {
+	background-image: url('../public/bulot.svg');
+	background-repeat: no-repeat;
+	background-position: 90% 10%;
 }
 
 .footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	height: 100px;
+	border-top: 1px solid #eaeaea;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
 }
 
 .title a {
-  color: #0070f3;
-  text-decoration: none;
+	color: #0070f3;
+	text-decoration: none;
 }
 
 .title a:hover,
 .title a:focus,
 .title a:active {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+	margin: 0;
+	line-height: 1.15;
+	font-size: 4rem;
 }
 
 .title,
 .description {
-  text-align: center;
+	text-align: center;
 }
 
 .description {
-  line-height: 1.5;
-  font-size: 1.5rem;
+	line-height: 1.5;
+	font-size: 1.5rem;
 }
 
 .code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+	background: #fafafa;
+	border-radius: 5px;
+	padding: 0.75rem;
+	font-size: 1.1rem;
+	font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+		Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	max-width: 800px;
+	margin-top: 3rem;
 }
 
 .card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
+	margin: 1rem;
+	padding: 1.5rem;
+	text-align: left;
+	color: inherit;
+	text-decoration: none;
+	border: 1px solid #eaeaea;
+	border-radius: 10px;
+	transition: color 0.15s ease, border-color 0.15s ease;
+	width: 45%;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+	color: #0070f3;
+	border-color: #0070f3;
 }
 
 .card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+	margin: 0 0 1rem 0;
+	font-size: 1.5rem;
 }
 
 .card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+	margin: 0;
+	font-size: 1.25rem;
+	line-height: 1.5;
 }
 
 .logo {
-  height: 1em;
-  margin-left: 0.5rem;
+	height: 1em;
+	margin-left: 0.5rem;
 }
 
-.cardBlock{
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.cardBlock {
+	padding: 20px;
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .cardBlock h3 {
-  color: #00517c;
-  text-transform: uppercase;
-  background: #ffffff;
-  font-size: 22px;
+	color: #00517c;
+	text-transform: uppercase;
+	background: #ffffff;
+	font-size: 22px;
 }
 
-.cardBlock > div{
-  width: 100%;
+.cardBlock > div {
+	width: 100%;
 }
 
-.cardBlockBordered{
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: 30px;
-  border: 3px solid #0092bd;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.cardBlockBordered {
+	padding: 20px;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 30px;
+	border: 3px solid #0092bd;
+	border-radius: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .alkoBlock {
-  align-items: normal;
-  background-position: 50% 50%;
-  padding: 0;
-  background-size: contain;
+	align-items: normal;
+	background-position: 50% 50%;
+	padding: 0;
+	background-size: contain;
 }
-.alkoBlock .price span {
-  font-weight: normal;
-  margin-right: 7px;
-  font-size: small;
-}
-.alkoBlock .price span .dot {
-  display: none;
+.capacity {
+	font-weight: normal;
+	margin-right: 8px;
+	font-size: x-small;
+  margin-top: 2px;
 }
 
 .cardBlockBordered h3 {
-  color: #00517c;
-  text-transform: uppercase;
-  background: #ffffff;
+	color: #00517c;
+	text-transform: uppercase;
+	background: #ffffff;
 }
 
 .cardBlock .cardBlockHeader {
-  margin: -35px 0 10px 0;
-  padding: 0 20px;
-  text-align: center;
-  width: fit-content;
+	margin: -35px 0 10px 0;
+	padding: 0 20px;
+	text-align: center;
+	width: fit-content;
 }
 
 .cardBlockHeader h3 {
-  margin: 0 0 10px 0;
-  padding: 0 20px;
-  border-radius: 20px;
+	margin: 0 0 10px 0;
+	padding: 0 20px;
+	border-radius: 20px;
 }
 
 .cardBlockHeaderDescription {
-  font-size: 12px;
-  margin: 0 auto;
-  max-width: 250px;
+	font-size: 12px;
+	margin: 0 auto;
+	max-width: 250px;
 }
 
-.product{
-  display: flex;
-  justify-content: space-between;
-  color: #00517c;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 10px;
-  border-bottom: 1px dotted #d8d6d6;
+.product {
+	display: flex;
+	justify-content: space-between;
+	color: #00517c;
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #d8d6d6;
 }
 
-.productName{
-  width: 70%;
-  font-size: 14px;
+.productName {
+	width: 70%;
+	font-size: 14px;
 }
 
-.price{
-  font-family: 'Montserrat', sans-serif;
-  color: #000;
-  font-size: 14px;
-  height: 16px;
-  display: flex;
-  align-self: center;
-  font-weight: bold;
+.price {
+	font-family: 'Montserrat', sans-serif;
+	color: #000;
+	font-size: 14px;
+	height: 16px;
+	display: flex;
+	align-self: center;
+	font-weight: bold;
 }
 
-.productDescription{
-  font-weight: normal;
-  font-size: 12px;
+.productDescription {
+	font-weight: normal;
+	font-size: 12px;
 }
 
-.filled{
-  border: none;
-  background-color: #f2e7e2;
-  border-radius: 30px;
+.filled {
+	border: none;
+	background-color: #f2e7e2;
+	border-radius: 30px;
 }
 
-.filled.blue{
-  background-color: #e4eaf0;
+.filled.blue {
+	background-color: #e4eaf0;
 }
 
 .filled .cardBlockHeader {
-  margin: -22px 0 10px 0;
+	margin: -22px 0 10px 0;
 }
 
-.filled .cardBlockHeader h3{
-  border-radius: 0 0 20px 20px;
+.filled .cardBlockHeader h3 {
+	border-radius: 0 0 20px 20px;
 }
 
-.additionals{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #e4eaf0;
-  border-radius: 30px;
-  padding: 10px 0;
+.additionals {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #e4eaf0;
+	border-radius: 30px;
+	padding: 10px 0;
 }
 
-.additionalsCategory h3{
-  color: #00517c;
-  font-weight: bold;
-  font-size: 14px;
-  font-family: 'Open Sans', sans-serif;
-  margin: 0 30px 0 0;
-  white-space: nowrap;
+.additionalsCategory h3 {
+	color: #00517c;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+	margin: 0 30px 0 0;
+	white-space: nowrap;
 }
 
-.additionalsCategory > div{
-  display: flex;
-  justify-content: space-between;
+.additionalsCategory > div {
+	display: flex;
+	justify-content: space-between;
 }
 
-.additionals .additionalsHeader{
-  text-transform: uppercase;
-  color: #00517c;
-  font-size: 22px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
+.additionals .additionalsHeader {
+	text-transform: uppercase;
+	color: #00517c;
+	font-size: 22px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5px;
 }
 
-.dot{
-  margin: 0 5px;
+.dot {
+	margin: 0 5px;
 }
 
-.instagram{
-  display: flex;
-  align-items: center;
-  color: #0092bd;
+.instagram {
+	display: flex;
+	align-items: center;
+	color: #0092bd;
 }
 
-.instagram span{
-  position: relative;
-  top: -1px;
+.instagram span {
+	position: relative;
+	top: -1px;
 }
 
-.breakfastSection{
-  width: 100%;
+.breakfastSection {
+	width: 100%;
 }
 
 .breakfast {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
-.breakfast .price{
-  font-size: 18px;
-  color: #000000;
-  display: flex;
-  flex-direction: column;
+.breakfast .price {
+	font-size: 18px;
+	color: #000000;
+	display: flex;
+	flex-direction: column;
 }
 
-.list{
-  color: #00517c;
-  font-size: 16px;
-  font-weight: bold;
+.list {
+	color: #00517c;
+	font-size: 16px;
+	font-weight: bold;
 }
 
-.list ol{
-  margin-top: 0;
-  padding-left: 20px;
+.list ol {
+	margin-top: 0;
+	padding-left: 20px;
 }
 
 .list li {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
-.list span, .list p {
-  font-weight: normal;
-  display: block;
+.list span,
+.list p {
+	font-weight: normal;
+	display: block;
 }
 
-.breakfastDescription{
-  color: #00517c;
-  font-size: 16px;
-  font-weight: bold;
+.breakfastDescription {
+	color: #00517c;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 /*INFO BLOCK*/
-.infoBlock{
-  text-align: center;
-  border: 3px solid #0092bd;
-  border-radius: 30px;
-  padding: 10px 20px;
-  margin: 0 30px;
+.infoBlock {
+	text-align: center;
+	border: 3px solid #0092bd;
+	border-radius: 30px;
+	padding: 10px 20px;
+	margin: 0 30px;
 }
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+	.grid {
+		width: 100%;
+		flex-direction: column;
+	}
 }
 
 .breakFastHeader {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 h3.bigSeafoodHeader {
-  padding-bottom: 10px;
+	padding-bottom: 10px;
 }
