@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css';
 import classNames from 'classnames';
 
 export default function CategoryBlock({
+	id,
 	blockName,
 	products,
 	description,
@@ -36,7 +37,7 @@ export default function CategoryBlock({
 	};
 	return (
 		<div className={classNames(styles.cardBlock, className)}>
-			<div className={styles.cardBlockHeader}>
+			<div id={id} className={styles.cardBlockHeader}>
 				<h3>{blockName}</h3>
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>
 			</div>

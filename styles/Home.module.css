@@ -396,3 +396,13 @@
 h3.bigSeafoodHeader {
 	padding-bottom: 10px;
 }
+
+.navPanel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 80%;
+	background: white;
+	box-shadow: 0px 0px 10px;
+}

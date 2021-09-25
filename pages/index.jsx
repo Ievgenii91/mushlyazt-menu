@@ -3,12 +3,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Breakfasts from '../components/Breakfasts';
 import MainList from '../components/MainList';
+import NavigationPanel from '../components/NavigationPanel';
 import useSWR from 'swr';
 import styles from '../styles/Home.module.css';
 
 const trackEndpoint = '/api/user?zone=';
 const QR_SCAN_FREQUENCY_TIMEOUT = 60000; // 1 min
-const MAX_BREAKFAST_HOUR = 15;
+const MAX_BREAKFAST_HOUR = 14;
 
 const getData = async () => {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -37,10 +38,12 @@ const getData = async () => {
 	}
 };
 
-export default function Home({ blocks }) {
+export default function Home({ blocks, categories }) {
 	const data = useSWR(trackEndpoint, getData, {
 		dedupingInterval: 60000,
 	});
+
+	const [navPanelVisible, setNavPanelVisible] = useState(false);
 
 	const [breakfaskFirst, setBreakfaskFirst] = useState(false);
 
@@ -48,6 +51,14 @@ export default function Home({ blocks }) {
 		const hour = new Date().getHours();
 		setBreakfaskFirst(hour <= 10 || hour <= MAX_BREAKFAST_HOUR);
 	}, []);
+
+	const toggleNavigationPanel = () => {
+		setNavPanelVisible((v) => !v);
+	};
+
+	const navigateToCategory = () => {
+		setNavPanelVisible((v) => !v);
+	};
 
 	return (
 		<div className={styles.container}>
@@ -70,6 +81,7 @@ export default function Home({ blocks }) {
 
 			<main className={styles.main}>
 				<header>
+					<span onClick={() => toggleNavigationPanel()}>|||</span>
 					<Image
 						className={styles.logo}
 						priority={true}
@@ -94,10 +106,11 @@ export default function Home({ blocks }) {
 						<span>mushlya.zt</span>
 					</a>
 				</header>
-				
-				{ breakfaskFirst && <Breakfasts blocks={blocks} /> }
+
+				{navPanelVisible && <NavigationPanel categories={categories} navigateToCategory={navigateToCategory} />}
+				{breakfaskFirst && <Breakfasts blocks={blocks} />}
 				<MainList blocks={blocks} showMainLabel={breakfaskFirst} />
-				{ !breakfaskFirst && <Breakfasts blocks={blocks} /> }
+				{!breakfaskFirst && <Breakfasts blocks={blocks} />}
 			</main>
 		</div>
 	);
