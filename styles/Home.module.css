@@ -390,19 +390,69 @@
 }
 
 .breakFastHeader {
-	font-size: 30px;
+	font-size: 1.6rem;
 }
 
 h3.bigSeafoodHeader {
 	padding-bottom: 10px;
 }
 
-.navPanel {
+.menuIcon {
+	color: #0092bd;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 0.5rem;
+	left: 1rem;
+	transform: rotate(-90deg);
+}
+
+.fixedHeader {
 	position: fixed;
 	top: 0;
-	left: 0;
+	height: 45px;
+	transition: all 1s ease-in;
+	box-shadow: -1px 1px 6px 0px #5393C1;
+	width: 100%;
+	background-color: #e4eaf0;
+}
+.fixedHeader img {
+	top: 20px !important;
+}
+
+.navPanel {
+	overflow: auto;
+	transition: .5s;
+	position: fixed;
+	top: 0;
 	bottom: 0;
 	width: 80%;
-	background: white;
-	box-shadow: 0px 0px 10px;
+	background: #fafafa;
+	border-right: 1px solid #def3fa;
+	box-shadow: 1px -1px 6px 0px #5393C1;
+}
+
+.navPanel .close {
+	font-size: 3rem;
+	transform: rotate(-45deg);	
+	position: absolute;
+	right: 10px;
+	top: -5px;
+	color: #0092bd;
+}
+.navPanel ul {
+	padding: 0 15px;
+	margin-top: 2rem;
+}
+.navPanel ul li {
+	list-style-type: none;
+	margin: 15px 0;
+}
+.navPanel a {
+	color: #0092bd;
+	border-bottom: 1px dotted #d8d6d6;
+	font-size: 1rem;
+}
+
+.navPanel a:hover, .navPanel a:active {
+	color: #def3fa;
 }
