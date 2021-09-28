@@ -14,7 +14,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.fixedHeaderWrapper {
-	margin-top: 55px !important;
-}

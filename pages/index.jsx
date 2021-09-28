@@ -6,6 +6,7 @@ import MainList from '../components/MainList';
 import NavigationPanel from '../components/NavigationPanel';
 import useSWR from 'swr';
 import { BlockNames } from '../constants/blocks-names';
+import classNames from 'classnames';
 import styles from '../styles/Home.module.css';
 
 const trackEndpoint = '/api/user?zone=';
@@ -124,7 +125,7 @@ export default function Home({ blocks, categories }) {
 			</Head>
 
 			<main className={styles.main}>
-				<header className={fixedHeader ? styles.fixedHeader : ''}>
+				<header>
 					<span className={styles.menuIcon} onClick={toggleNavigationPanel}>
 						|||
 					</span>
@@ -133,27 +134,36 @@ export default function Home({ blocks, categories }) {
 						priority={true}
 						src="/logo.svg"
 						alt="Мушля"
-						width={fixedHeader ? 140 : 280}
-						height={fixedHeader ? 30 : 60}
+						width={280}
+						height={60}
 					/>
-					{!fixedHeader && (
-						<a
-							href={'https://www.instagram.com/mushlya.zt/'}
-							target={'_blank'}
-							rel="noreferrer"
-							className={styles.instagram}
-						>
-							<Image
-								priority={true}
-								src="/instagram.svg"
-								alt="Мушля"
-								width={16}
-								height={16}
-							/>
-							<span>mushlya.zt</span>
-						</a>
-					)}
+					<a
+						href={'https://www.instagram.com/mushlya.zt/'}
+						target={'_blank'}
+						rel="noreferrer"
+						className={styles.instagram}
+					>
+						<Image
+							priority={true}
+							src="/instagram.svg"
+							alt="Мушля"
+							width={16}
+							height={16}
+						/>
+						<span>mushlya.zt</span>
+					</a>
 				</header>
+
+				<div
+					className={classNames(
+						{ [styles.fixedHeader]: fixedHeader },
+						styles.sticky
+					)}
+				>
+					<span className={styles.menuIcon} onClick={toggleNavigationPanel}>
+						|||
+					</span>
+				</div>
 
 				<NavigationPanel
 					navPanelVisible={navPanelVisible}

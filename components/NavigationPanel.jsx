@@ -1,4 +1,5 @@
 import styles from '../styles/Home.module.css';
+import * as ga from '../lib/ga'
 
 export default function NavigationPanel({
 	categories,
@@ -10,7 +11,7 @@ export default function NavigationPanel({
 		const element = document.getElementById(data._id);
 		if (element) {
 			e.preventDefault();
-			const yOffset = -85;
+			const yOffset = -60;
 			const y =
 				element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
@@ -18,10 +19,17 @@ export default function NavigationPanel({
 		} else {
 			console.warn('no element', data._id);
 		}
+
+		ga.event({
+      action: 'search',
+      params : {
+        category: data.name
+      }
+    })
 	};
 
 	return (
-		<div
+		<nav
 			className={styles.navPanel}
 			style={{ left: !navPanelVisible ? '-85%' : 0 }}
 		>
@@ -39,6 +47,6 @@ export default function NavigationPanel({
 					);
 				})}
 			</ul>
-		</div>
+		</nav>
 	);
 }

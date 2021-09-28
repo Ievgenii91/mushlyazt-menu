@@ -10,7 +10,7 @@
 .heading {
 	font-family: 'Open Sans';
 	color: #00517c;
-	font-size: 48px;
+	font-size: 2rem;
 	text-align: center;
 }
 
@@ -398,6 +398,7 @@ h3.bigSeafoodHeader {
 }
 
 .menuIcon {
+	cursor: pointer;
 	color: #0092bd;
 	font-size: 1.5rem;
 	position: absolute;
@@ -405,22 +406,30 @@ h3.bigSeafoodHeader {
 	left: 1rem;
 	transform: rotate(-90deg);
 }
+.menuIcon:active, .menuIcon:hover,
+.close:active, .close:hover {
+	cursor: pointer;
+	color: #00517c;
+}
 
-.fixedHeader {
-	position: fixed;
-	top: 0;
-	height: 45px;
-	transition: all 1s ease-in;
-	box-shadow: -1px 1px 6px 0px #5393C1;
+.sticky {
 	width: 100%;
 	background-color: #e4eaf0;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	height: 0px;
+	transition: height .1s ease-out;
 }
-.fixedHeader img {
-	top: 20px !important;
+
+.fixedHeader {
+	height: 45px;
+	transition: height .1s ease-in;
+	box-shadow: -1px 1px 6px 0px #5393C1;
 }
 
 .navPanel {
-	overflow: auto;
+	overflow-y: scroll;
 	transition: .5s;
 	position: fixed;
 	top: 0;
@@ -454,5 +463,5 @@ h3.bigSeafoodHeader {
 }
 
 .navPanel a:hover, .navPanel a:active {
-	color: #def3fa;
+	color: #5393C1;
 }
