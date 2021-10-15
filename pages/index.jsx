@@ -118,7 +118,7 @@ export default function Home({ blocks, categories }) {
 					function gtag(){dataLayer.push(arguments);}
 					gtag('js', new Date());
 
-					gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS});
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
 					`,
 					}}
 				/>

@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css';
 import { BlockNames } from '../constants/blocks-names';
 import useGetBlock from '../hooks/useGetBlock';
 import CategoryBlock from './CategoryBlock';
+import OysterBlock from './OysterBlock';
 import classNames from 'classnames';
 import Additionals from './Additionals';
 
@@ -11,9 +12,12 @@ export default function MainList({ blocks, showMainLabel }) {
 	return (
 		<section>
 			{showMainLabel && <h1 className={styles.heading}>Основне меню</h1>}
-			<CategoryBlock
+			<OysterBlock
 				key={BlockNames.oysterBar}
-				className={styles.backgroundOyster}
+				className={classNames(
+					styles.backgroundOyster,
+					styles.cardBlockBordered
+				)}
 				{...getBlock(BlockNames.oysterBar)}
 			/>
 			<CategoryBlock
@@ -55,7 +59,6 @@ export default function MainList({ blocks, showMainLabel }) {
 				className={styles.cardBlockBordered}
 				{...getBlock(BlockNames.bowls)}
 			/>
-			<CategoryBlock key={BlockNames.salad} {...getBlock(BlockNames.salad)} />
 			<CategoryBlock
 				key={BlockNames.avokadoSalad}
 				{...getBlock(BlockNames.avokadoSalad)}
@@ -81,11 +84,14 @@ export default function MainList({ blocks, showMainLabel }) {
 				className={styles.backgroundBulot}
 				{...getBlock(BlockNames.drinksGlass)}
 			/>
-			<div className={classNames(styles.backgroundBulot, styles.cardBlockBordered, styles.alkoBlock)}>
-				<CategoryBlock
-					key={BlockNames.shots}
-					{...getBlock(BlockNames.shots)}
-				/>
+			<div
+				className={classNames(
+					styles.backgroundBulot,
+					styles.cardBlockBordered,
+					styles.alkoBlock
+				)}
+			>
+				<CategoryBlock key={BlockNames.shots} {...getBlock(BlockNames.shots)} />
 				<CategoryBlock
 					key={BlockNames.cocktails}
 					{...getBlock(BlockNames.cocktails)}
