@@ -16,11 +16,11 @@ export default function Breakfasts({ blocks }) {
 			<InfoBlock message="Щоранку 11:00 до 15:00 готуємо круті сніданки з морепродуктами та ігристим." />
 			<CustomBlock className={classNames(styles.filled, styles.blue)} />
 			<InfoBlock message={'Твій аристократичний початок дня'} />
-			<CategoryBlock
+			{/* <CategoryBlock
 				key={BlockNames.oysterBar}
 				className={styles.backgroundOyster}
 				{...getBlock(BlockNames.oysterBar)}
-			/>
+			/> */}
 			<CategoryBlock
 				key={BlockNames.breakfast}
 				{...getBlock(BlockNames.breakfast)}
