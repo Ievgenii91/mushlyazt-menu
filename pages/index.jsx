@@ -117,8 +117,13 @@ export default function Home({ blocks, categories }) {
 					window.dataLayer = window.dataLayer || [];
 					function gtag(){dataLayer.push(arguments);}
 					gtag('js', new Date());
-
-					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+					let userId = localStorage.getItem('muser_id');
+					if(!userId) {
+						userId = new Date().getTime();
+						localStorage.setItem('muser_id', userId);
+					}
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', { 'user_id': userId });
+					gtag('set', 'user_properties', { 'crm_id' : userId });
 					`,
 					}}
 				/>
