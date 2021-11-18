@@ -119,8 +119,8 @@ export default function Home({ blocks, categories }) {
 					gtag('js', new Date());
 					let userId = localStorage.getItem('muser_id');
 					if(!userId) {
-						userId = new Date().getTime();
-						localStorage.setItem('muser_id', userId);
+					 userId = new Date().getTime();
+					 localStorage.setItem('muser_id', userId);
 					}
 					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', { 'user_id': userId });
 					gtag('set', 'user_properties', { 'crm_id' : userId });
