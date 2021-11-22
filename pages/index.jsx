@@ -60,6 +60,10 @@ export default function Home({ blocks, categories }) {
 			<Head>
 				<title>Меню кафе Мушля у місті Житомир</title>
 				<meta name="description" content="QR меню кафе Мушля у Житомирі" />
+				<meta
+					name="facebook-domain-verification"
+					content={`${process.env.NEXT_PUBLIC_FB_DOMAIN_TOKEN}`}
+				/>
 				<link rel="icon" href="/favicon.ico" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
