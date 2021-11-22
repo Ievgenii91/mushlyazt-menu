@@ -29,7 +29,6 @@ export default function CustomBlock({ className }) {
 							салатів
 						</p>
 						<p>- великий омлет з тунцем, авокадо та ніжним сиром</p>
-						<p>- вівсянка з пармезаном</p>
 					</li>
 				</ol>
 			</div>
