@@ -59,10 +59,6 @@ export default function MainList({ blocks, showMainLabel }) {
 				className={styles.cardBlockBordered}
 				{...getBlock(BlockNames.bowls)}
 			/>
-			<CategoryBlock
-				key={BlockNames.avokadoSalad}
-				{...getBlock(BlockNames.avokadoSalad)}
-			/>
 			<CategoryBlock key={BlockNames.steaks} {...getBlock(BlockNames.steaks)} />
 			<CategoryBlock key={BlockNames.soups} {...getBlock(BlockNames.soups)} />
 			<CategoryBlock

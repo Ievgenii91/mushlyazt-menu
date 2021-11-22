@@ -8,7 +8,6 @@ export const BlockNames = {
    seafoodPlato: 'Seafood плато',
    mussels: 'Мідії',
    sandwiches: 'Бургери та сендвічі',
-   avokadoSalad: 'Авокадо салат',
    steaks: 'Стейки із риби',
    soups: 'Супи',
    rolls: 'Роли',
