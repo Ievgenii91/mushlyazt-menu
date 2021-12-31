@@ -186,8 +186,11 @@
 .cardBlock > div {
 	width: 100%;
 }
-
+.transparentBackgroundHeader h3 {
+	background: transparent;
+}
 .cardBlockBordered {
+	margin-top: 40px;
 	padding: 20px;
 	font-family: 'Open Sans', sans-serif;
 	margin-bottom: 30px;
@@ -323,15 +326,6 @@
 	justify-content: space-between;
 }
 
-.additionals .additionalsHeader {
-	text-transform: uppercase;
-	color: #00517c;
-	font-size: 22px;
-	display: flex;
-	justify-content: center;
-	margin-bottom: 5px;
-}
-
 .dot {
 	margin: 0 5px;
 }
@@ -440,8 +434,35 @@ h3.bigSeafoodHeader {
 
 .fixedHeader {
 	height: 45px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	transition: height .1s ease-in;
 	box-shadow: -1px 1px 6px 0px #5393C1;
+	justify-content: center;
+}
+.toggler {
+	align-self: center;
+}
+.toggler span {
+	padding: 6px 12px;
+	border: 2px solid #85bce0;
+	color: #6198b6;
+	background: #fff;
+	font-size: 13px;
+	line-height: 20px;
+	margin: 2px 8px;
+	border-radius: 6px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+.toggler span.active {
+	background: #fff;
+	border: 2px solid #5393C1;
+	color: #00517c;
+	background: #fff;
+	transition: all 0.3s ease-in;
 }
 
 .navPanel {

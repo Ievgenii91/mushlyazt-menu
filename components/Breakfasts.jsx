@@ -14,23 +14,16 @@ export default function Breakfasts({ blocks }) {
 		<section className={styles.breakfastSection}>
 			<h1 className={classNames(styles.heading, styles.breakFastHeader)}>Сніданки</h1>
 			<CustomBlock className={classNames(styles.filled, styles.blue)} />
-			<InfoBlock message={'Твій аристократичний початок дня'} />
-			{/* <CategoryBlock
-				key={BlockNames.oysterBar}
-				className={styles.backgroundOyster}
-				{...getBlock(BlockNames.oysterBar)}
-			/> */}
+			<InfoBlock message={'Твій смачний початок дня'} />
+	
 			<CategoryBlock
 				key={BlockNames.breakfast}
 				{...getBlock(BlockNames.breakfast)}
 			/>
-			<CategoryBlock
-				key={BlockNames.seafoodPlato}
-				className={classNames(styles.filled, styles.backgroundShrimp)}
-				{...getBlock(BlockNames.seafoodPlato)}
-			/>
+
 			<CategoryBlock
 				key={BlockNames.sweetBreakfast}
+				className={styles.filled}
 				{...getBlock(BlockNames.sweetBreakfast)}
 			/>
 		</section>

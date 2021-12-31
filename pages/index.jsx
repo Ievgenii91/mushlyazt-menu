@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Breakfasts from '../components/Breakfasts';
+// import Breakfasts from '../components/Breakfasts';
 import MainList from '../components/MainList';
 import NavigationPanel from '../components/NavigationPanel';
 import { BlockNames } from '../constants/blocks-names';
+import useScrollTo from '../hooks/useScrollTo';
 import classNames from 'classnames';
 import styles from '../styles/Home.module.css';
 
@@ -12,10 +13,9 @@ const MAX_BREAKFAST_HOUR = 14;
 
 export default function Home({ blocks, categories }) {
 	const [navPanelVisible, setNavPanelVisible] = useState(false);
-
 	const [breakfaskFirst, setBreakfaskFirst] = useState(false);
-
 	const [fixedHeader, setFixedHeader] = useState(false);
+	const [isFoodViewed, setFoodViewed] = useState(true);
 
 	useEffect(() => {
 		if (fixedHeader) {
@@ -54,6 +54,29 @@ export default function Home({ blocks, categories }) {
 			});
 		}
 	};
+
+	const runScrollTo = useScrollTo();
+
+	const onInViewToggle = useCallback((inView, block, type) => {
+		// console.log(inView, block, type);
+		if (inView) {
+			setFoodViewed(type === 'food');
+		}
+	}, []);
+
+	const navigateToType = useCallback(
+		(type) => {
+			if (categories.length) {
+				const id =
+					type === 'food'
+						? categories[0]._id
+						: categories.find((v) => v.type !== 'food')._id;
+				runScrollTo({ preventDefault: () => {} }, id);
+				setFoodViewed(type === 'food');
+			}
+		},
+		[categories, runScrollTo]
+	);
 
 	return (
 		<div className={styles.container}>
@@ -159,6 +182,25 @@ export default function Home({ blocks, categories }) {
 					<span className={styles.menuIcon} onClick={toggleNavigationPanel}>
 						|||
 					</span>
+
+					<div className={styles.toggler}>
+						<span
+							className={classNames({
+								[styles.active]: isFoodViewed,
+							})}
+							onClick={() => navigateToType('food')}
+						>
+							Страви
+						</span>
+						<span
+							className={classNames({
+								[styles.active]: !isFoodViewed,
+							})}
+							onClick={() => navigateToType('bar')}
+						>
+							Напої
+						</span>
+					</div>
 				</div>
 
 				<NavigationPanel
@@ -168,9 +210,13 @@ export default function Home({ blocks, categories }) {
 					close={toggleNavigationPanel}
 				/>
 
-				{breakfaskFirst && <Breakfasts blocks={blocks} />}
-				<MainList blocks={blocks} showMainLabel={breakfaskFirst} />
-				{!breakfaskFirst && <Breakfasts blocks={blocks} />}
+				{/* {breakfaskFirst && <Breakfasts blocks={blocks} />} */}
+				<MainList
+					blocks={blocks}
+					showMainLabel={breakfaskFirst}
+					onInViewToggle={onInViewToggle}
+				/>
+				{/* {!breakfaskFirst && <Breakfasts blocks={blocks} />} */}
 			</main>
 		</div>
 	);
@@ -185,10 +231,10 @@ export async function getStaticProps() {
 	const productsRes = await fetch(
 		`https://${host}/api/v1/products?clientId=${clientId}`
 	);
-	const { data: categories } = await res.json();
+	const { data: categoriesFromServer } = await res.json();
 	const { data: products } = await productsRes.json();
 
-	if (!categories || !products) {
+	if (!categoriesFromServer || !products) {
 		return {
 			notFound: true,
 		};
@@ -197,19 +243,28 @@ export async function getStaticProps() {
 	const blocks = [];
 	const availableProducts = products.filter((v) => v.available);
 
-	categories.forEach((cat) => {
-		blocks.push({
-			id: cat._id,
-			blockName: cat.name,
-			description: cat.description,
-			products: availableProducts
-				.filter((v) => v.category === cat._id)
-				.sort((a, b) => a.price - b.price),
-			subCategories: cat.children,
-		});
+	const categories = categoriesFromServer.map((cat) => {
+		const products = availableProducts
+			.filter((v) => v.category === cat._id)
+			.sort((a, b) => a.price - b.price);
+		if (products.length) {
+			const type = products[0].type;
+			blocks.push({
+				id: cat._id,
+				blockName: cat.name,
+				classes: cat.classes || '',
+				description: cat.description,
+				products,
+				type,
+				subCategories: cat.children,
+			});
+			return {
+				...cat,
+				type,
+			};
+		}
+		return cat;
 	});
-
-	const filteredBlocks = blocks.filter((block) => block.products.length > 0);
 	const filteredCategories = categories.filter(
 		(cat) =>
 			availableProducts.filter(({ category }) => category === cat._id).length >
@@ -223,7 +278,7 @@ export async function getStaticProps() {
 				registeredBlockNames.includes(name)
 			),
 			products,
-			blocks: filteredBlocks,
+			blocks,
 		}, // will be passed to the page component as props
 	};
 }

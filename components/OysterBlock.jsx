@@ -1,14 +1,14 @@
 import styles from '../styles/Home.module.css';
 import classNames from 'classnames';
 
-export default function CategoryBlock({
+export default function OysterBlock({
 	id,
 	blockName,
 	products,
 	description,
 	className,
 }) {
-	let sorted = products.sort((a, b) => b.name > a.name ? -1 : 1);
+	let sorted = products.sort((a, b) => (b.name > a.name ? -1 : 1));
 	sorted = sorted.reduce((prev, curr) => {
 		const found = prev.find((v) => v.name === curr.name);
 		if (found) {
@@ -33,8 +33,8 @@ export default function CategoryBlock({
 				<div className={styles.productGrouped}>{v.name}</div>
 
 				<div className={styles.groupedPrices}>
-					{v.prices.map((i) => (
-						<span key={i}>
+					{v.prices.map((i, index) => (
+						<span key={index}>
 							{i.name}&nbsp; - &nbsp;<b>{i.price} ₴</b>
 						</span>
 					))}
@@ -44,7 +44,10 @@ export default function CategoryBlock({
 	};
 	return (
 		<div className={classNames(styles.cardBlock, className)}>
-			<div id={id} className={styles.cardBlockHeader}>
+			<div
+				id={id}
+				className={styles.cardBlockHeader}
+			>
 				<h3>{blockName}</h3>
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>
 			</div>

@@ -19,5 +19,30 @@ export const BlockNames = {
    breakfast: 'Страви на сніданок',
    sweetBreakfast: 'Солоденького?',
    shots: 'Пий чарками',
-   cocktails: 'Коктейлі'
+   cocktails: 'Коктейлі',
+   pasta: 'Паста',
+   // додатки
 };
+
+export const styleConfig = {
+   [BlockNames.tartar]: ['cardBlock'],
+   [BlockNames.cooledSeafood]: ['backgroundBulot', 'transparentBackgroundHeader'],
+   [BlockNames.grilledSeafood]: ['cardBlockBordered'],
+   [BlockNames.plato]: ['filled', 'backgroundShrimp'],
+   [BlockNames.seafoodPlato]: ['filled', 'backgroundShrimp'],
+   [BlockNames.mussels]: ['filled', 'blue', 'backgroundMussels'],
+   [BlockNames.sandwiches]: ['backgroundFish'],
+   [BlockNames.bowls]: ['cardBlockBordered'],
+   [BlockNames.steaks]: [''],
+   [BlockNames.soups]: [''],
+   [BlockNames.rolls]: ['filled', 'blue', 'backgroundFish'],
+   [BlockNames.pasta]: [''],
+   [BlockNames.deserts]: ['filled'],
+   [BlockNames.drinksGlass]: ['backgroundBulot'],
+   [BlockNames.groupedAlko]: ['backgroundBulot', 'cardBlockBordered', 'alkoBlock'],
+   [BlockNames.shots]: [''],
+   [BlockNames.cocktails]: [''],
+   [BlockNames.beer]: ['filled'],
+   [BlockNames.drinksBottle]: [''],
+   [BlockNames.softDrinks]: [''],
+}

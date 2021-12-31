@@ -1,5 +1,7 @@
 import styles from '../styles/Home.module.css';
 import classNames from 'classnames';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react/cjs/react.development';
 
 export default function CategoryBlock({
 	id,
@@ -8,9 +10,21 @@ export default function CategoryBlock({
 	description,
 	className,
 	subCategories,
+	onInViewToggle,
+	type,
 }) {
+	const [ref, inView] = useInView({
+		threshold: 1,
+	});
+
+	useEffect(() => {
+		if (typeof onInViewToggle === 'function') {
+			onInViewToggle(inView, blockName, type);
+		}
+	}, [inView, blockName, type, onInViewToggle]);
+
 	const hasSubCategories = !!subCategories && !!subCategories.length;
-	
+
 	const product = (v) => {
 		const showCalcs = v.capacity || v.weight;
 		return (
@@ -36,7 +50,7 @@ export default function CategoryBlock({
 		);
 	};
 	return (
-		<div className={classNames(styles.cardBlock, className)}>
+		<div className={classNames(styles.cardBlock, className)} ref={ref}>
 			<div id={id} className={styles.cardBlockHeader}>
 				<h3>{blockName}</h3>
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>

@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css';
-import * as ga from '../lib/ga'
+import * as ga from '../lib/ga';
+import useScrollTo from '../hooks/useScrollTo';
 
 export default function NavigationPanel({
 	categories,
@@ -7,25 +8,17 @@ export default function NavigationPanel({
 	navPanelVisible,
 	close,
 }) {
-	const scrollTo = (e, data) => {
-		const element = document.getElementById(data._id);
-		if (element) {
-			e.preventDefault();
-			const yOffset = -60;
-			const y =
-				element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+	const runScrollTo = useScrollTo();
 
-			window.scrollTo({ top: y, behavior: 'smooth' });
-		} else {
-			console.warn('no element', data._id);
-		}
+	const scrollTo = (e, data) => {
+		runScrollTo(e, data._id);
 
 		ga.event({
-      action: 'search',
-      params : {
-        category: data.name
-      }
-    })
+			action: 'search',
+			params: {
+				category: data.name,
+			},
+		});
 	};
 
 	return (
