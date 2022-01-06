@@ -7,12 +7,13 @@ import classNames from 'classnames';
 
 const getClasses = (classes) => classes.split(' ').map((v) => styles[v]);
 
-export default function MainList({ blocks, showMainLabel, onInViewToggle }) {
+export default function MainList({ blocks, onInViewToggle }) {
 	const getBlock = useGetBlock(blocks);
+
+	if (!blocks.length) return null;
 
 	return (
 		<section>
-			{showMainLabel && <h1 className={styles.heading}>Основне меню</h1>}
 			<OysterBlock
 				key={'custom-oysterBar'}
 				className={classNames(
@@ -26,6 +27,7 @@ export default function MainList({ blocks, showMainLabel, onInViewToggle }) {
 					({ type, blockName }) =>
 						type === 'food' && blockName !== BlockNames.oysterBar
 				)
+				.sort((a, b) => (a.order > b.order ? 1 : -1))
 				.map((data) => {
 					const classes = data.classes
 						? getClasses(data.classes)
@@ -41,11 +43,12 @@ export default function MainList({ blocks, showMainLabel, onInViewToggle }) {
 				})}
 			{blocks
 				.filter(({ type }) => type !== 'food')
-				.reduce((acc, data) => {
+				.sort((a, b) => (a.order > b.order ? 1 : -1))
+				.map((data) => {
 					const classes = data.classes
 						? getClasses(data.classes)
 						: (styleConfig[data.blockName] || []).map((v) => styles[v]);
-					const component = (
+					return (
 						<CategoryBlock
 							className={classNames(...classes)}
 							key={data.id}
@@ -53,36 +56,7 @@ export default function MainList({ blocks, showMainLabel, onInViewToggle }) {
 							{...data}
 						/>
 					);
-					// TODO: add array of wrapped items
-					if (data.blockName === BlockNames['cocktails']) {
-						return [...acc];
-					}
-					if (data.blockName === BlockNames['shots']) {
-						const newData = blocks.find(
-							(v) => v.blockName === BlockNames['cocktails']
-						);
-						let classes = getClasses(newData.classes);
-						const comp = (
-							<div
-								className={classNames(
-									styles.backgroundBulot,
-									styles.cardBlockBordered,
-									styles.alkoBlock
-								)}
-							>
-								{component}
-								<CategoryBlock
-									className={classNames(...classes)}
-									key={newData.id}
-									onInViewToggle={onInViewToggle}
-									{...newData}
-								/>
-							</div>
-						);
-						return [...acc, comp];
-					}
-					return [...acc, component];
-				}, [])}
+				})}
 		</section>
 	);
 }

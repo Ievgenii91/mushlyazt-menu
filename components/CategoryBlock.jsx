@@ -1,7 +1,7 @@
-import styles from '../styles/Home.module.css';
-import classNames from 'classnames';
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react/cjs/react.development';
+import classNames from 'classnames';
+import styles from '../styles/Home.module.css';
 
 export default function CategoryBlock({
 	id,
@@ -20,6 +20,18 @@ export default function CategoryBlock({
 	useEffect(() => {
 		if (typeof onInViewToggle === 'function') {
 			onInViewToggle(inView, blockName, type);
+		}
+		try {
+			if (inView) {
+				globalThis.fbq('trackCustom', 'Viewed', { name: blockName });
+				globalThis.gtag('event', 'CategoryViewed', {
+					event_category: 'CategoryViewed',
+					event_label: 'blockName',
+					value: blockName,
+				});
+			}
+		} catch (e) {
+			console.error(e);
 		}
 	}, [inView, blockName, type, onInViewToggle]);
 

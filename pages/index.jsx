@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-// import Breakfasts from '../components/Breakfasts';
 import MainList from '../components/MainList';
 import NavigationPanel from '../components/NavigationPanel';
 import { BlockNames } from '../constants/blocks-names';
@@ -16,6 +15,23 @@ export default function Home({ blocks, categories }) {
 	const [breakfaskFirst, setBreakfaskFirst] = useState(false);
 	const [fixedHeader, setFixedHeader] = useState(false);
 	const [isFoodViewed, setFoodViewed] = useState(true);
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		setData(
+			blocks.map((block) => {
+				if (breakfaskFirst) {
+					if (block.blockName.toLowerCase().includes('страви на сніданок')) {
+						block.order = -12;
+					}
+					if (block.blockName.toLowerCase().includes('солоденького')) {
+						block.order = -11;
+					}
+				}
+				return block;
+			})
+		);
+	}, [blocks, breakfaskFirst]);
 
 	useEffect(() => {
 		if (fixedHeader) {
@@ -58,7 +74,6 @@ export default function Home({ blocks, categories }) {
 	const runScrollTo = useScrollTo();
 
 	const onInViewToggle = useCallback((inView, block, type) => {
-		// console.log(inView, block, type);
 		if (inView) {
 			setFoodViewed(type === 'food');
 		}
@@ -67,10 +82,11 @@ export default function Home({ blocks, categories }) {
 	const navigateToType = useCallback(
 		(type) => {
 			if (categories.length) {
+				const cats = categories.sort((a, b) => (a.order > b.order ? 1 : -1));
 				const id =
 					type === 'food'
-						? categories[0]._id
-						: categories.find((v) => v.type !== 'food')._id;
+						? cats.find((v) => v.type === 'food')._id
+						: cats.find((v) => v.type !== 'food')._id;
 				runScrollTo({ preventDefault: () => {} }, id);
 				setFoodViewed(type === 'food');
 			}
@@ -210,13 +226,7 @@ export default function Home({ blocks, categories }) {
 					close={toggleNavigationPanel}
 				/>
 
-				{/* {breakfaskFirst && <Breakfasts blocks={blocks} />} */}
-				<MainList
-					blocks={blocks}
-					showMainLabel={breakfaskFirst}
-					onInViewToggle={onInViewToggle}
-				/>
-				{/* {!breakfaskFirst && <Breakfasts blocks={blocks} />} */}
+				<MainList blocks={data} onInViewToggle={onInViewToggle} />
 			</main>
 		</div>
 	);
@@ -257,6 +267,7 @@ export async function getStaticProps() {
 				products,
 				type,
 				subCategories: cat.children,
+				order: cat.order || 1,
 			});
 			return {
 				...cat,
