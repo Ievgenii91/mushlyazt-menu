@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
 import styles from '../styles/Home.module.css';
@@ -16,24 +16,36 @@ export default function CategoryBlock({
 	const [ref, inView] = useInView({
 		threshold: 1,
 	});
+	const [start, setStart] = useState(null);
 
 	useEffect(() => {
-		if (typeof onInViewToggle === 'function') {
-			onInViewToggle(inView, blockName, type);
-		}
 		try {
 			if (inView) {
+				setStart(new Date().getTime());
 				globalThis.fbq('trackCustom', 'Viewed', { name: blockName });
 				globalThis.gtag('event', 'CategoryViewed', {
-					event_category: 'CategoryViewed',
-					event_label: 'blockName',
+					event_category: 'CategoryInView',
+					event_label: 'CategoryName',
 					value: blockName,
 				});
+			} else if (start) {
+				const diff = start - new Date().getTime();
+				if (diff < -600) {
+					globalThis.gtag('event', 'CategoryTime', {
+						event_category: blockName,
+						event_label: 'TimeSpentInCategory',
+						value: Math.abs(diff),
+					});
+				}
+				setStart(null);
 			}
 		} catch (e) {
 			console.error(e);
 		}
-	}, [inView, blockName, type, onInViewToggle]);
+		if (typeof onInViewToggle === 'function') {
+			onInViewToggle(inView, blockName, type);
+		}
+	}, [inView, start, setStart, blockName, type, onInViewToggle]);
 
 	const hasSubCategories = !!subCategories && !!subCategories.length;
 
