@@ -389,7 +389,16 @@
 	border: 3px solid #0092bd;
 	border-radius: 30px;
 	padding: 10px 20px;
-	margin: 0 30px;
+}
+
+.infoBlock div {
+	font-weight: normal;
+	font-size: 13px;
+}
+.infoBlock .tip {
+	font-weight: normal;
+	font-size: 13px;
+	color:#0092bd;
 }
 
 @media (max-width: 600px) {

@@ -22,12 +22,12 @@ export default function CategoryBlock({
 		try {
 			if (inView) {
 				setStart(new Date().getTime());
-				globalThis.fbq('trackCustom', 'Viewed', { name: blockName });
-				globalThis.gtag('event', 'CategoryViewed', {
-					event_category: 'CategoryInView',
-					event_label: 'CategoryName',
-					value: blockName,
-				});
+				// globalThis.fbq('trackCustom', 'Viewed', { name: blockName });
+				// globalThis.gtag('event', 'CategoryViewed', {
+				// 	event_category: 'CategoryInView',
+				// 	event_label: 'CategoryName',
+				// 	value: blockName,
+				// });
 			} else if (start) {
 				const diff = start - new Date().getTime();
 				if (diff < -600) {
