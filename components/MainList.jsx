@@ -5,6 +5,7 @@ import CategoryBlock from './CategoryBlock';
 import OysterBlock from './OysterBlock';
 import classNames from 'classnames';
 import InfoBlock from './InfoBlock';
+import CustomBlock from './CustomBlock';
 
 const getClasses = (classes) => classes.split(' ').map((v) => styles[v]);
 
@@ -38,6 +39,7 @@ export default function MainList({ blocks, onInViewToggle }) {
 				)}
 				{...getBlock(BlockNames.oysterBar)}
 			/>
+			<CustomBlock className={styles.custom}/>
 			{blocks
 				.filter(
 					({ type, blockName }) =>

@@ -349,6 +349,10 @@
 	margin-bottom: 30px;
 }
 
+.breakfast .product {
+	font-weight: normal;
+}
+
 .breakfast .price {
 	font-size: 18px;
 	color: #000000;
@@ -412,8 +416,23 @@
 	font-size: 1.6rem;
 }
 
+.custom {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.custom div {
+	font-size: 14px;
+}
+.custom ol {
+	padding-left: 0px;
+}
+.custom ol p {
+	margin: 5px 0;
+}
+
 h3.bigSeafoodHeader {
-	padding-bottom: 10px;
+	/* padding-bottom: 10px; */
+	font-size: 18px;
 }
 
 .menuIcon {

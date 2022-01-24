@@ -6,9 +6,6 @@ export default function CustomBlock({ className }) {
 		<div className={classNames(styles.cardBlock, styles.breakfast, className)}>
 			<div className={styles.cardBlockHeader}>
 				<h3 className={styles.bigSeafoodHeader}>ВЕЛИКИЙ SEAFOOD СНІДАНОК</h3>
-				<p className={styles.breakfastDescription}>
-					Ранок має починатися з ігристого ;)
-				</p>
 				<p className={styles.price}>159₴</p>
 			</div>
 			<div className={styles.list}>
