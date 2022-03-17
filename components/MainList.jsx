@@ -2,10 +2,10 @@ import styles from '../styles/Home.module.css';
 import { BlockNames, styleConfig } from '../constants/blocks-names';
 import useGetBlock from '../hooks/useGetBlock';
 import CategoryBlock from './CategoryBlock';
-import OysterBlock from './OysterBlock';
+// import OysterBlock from './OysterBlock';
 import classNames from 'classnames';
-import InfoBlock from './InfoBlock';
-import CustomBlock from './CustomBlock';
+// import InfoBlock from './InfoBlock';
+// import CustomBlock from './CustomBlock';
 
 const getClasses = (classes) => classes.split(' ').map((v) => styles[v]);
 
@@ -14,36 +14,38 @@ export default function MainList({ blocks, onInViewToggle }) {
 
 	if (!blocks.length) return null;
 
-	const sigs = [
-		'Сигарети Sobranie BlackS',
-		'Сигарети Sobranie Blue',
-		'Сигарети Sobranie Gold',
-		'Сигарети Winston Blue',
-		'Сигарети Winston EXPAND DUO',
-		'Сигарети Winston XS Caster',
-		'Сигарети Winston XS Impulse',
-		'Сигарети Winston XSpression Fresh',
-		'Сигарети Winston XSpression Purple',
-		'Сигарети Winston XStyle Blue',
-		'Сигарети Winston XStyle DUO Green',
-		'Сигарети Winston XStyle Silver',
-	];
+	// const sigs = [
+	// 	'Сигарети Sobranie BlackS',
+	// 	'Сигарети Sobranie Blue',
+	// 	'Сигарети Sobranie Gold',
+	// 	'Сигарети Winston Blue',
+	// 	'Сигарети Winston EXPAND DUO',
+	// 	'Сигарети Winston XS Caster',
+	// 	'Сигарети Winston XS Impulse',
+	// 	'Сигарети Winston XSpression Fresh',
+	// 	'Сигарети Winston XSpression Purple',
+	// 	'Сигарети Winston XStyle Blue',
+	// 	'Сигарети Winston XStyle DUO Green',
+	// 	'Сигарети Winston XStyle Silver',
+	// ];
+
+	const blockValues = Object.values(BlockNames);
+	console.log(blockValues);
 
 	return (
 		<section>
-			<OysterBlock
+			{/* <OysterBlock
 				key={'custom-oysterBar'}
 				className={classNames(
 					styles.backgroundOyster,
 					styles.cardBlockBordered
 				)}
 				{...getBlock(BlockNames.oysterBar)}
-			/>
-			<CustomBlock className={styles.custom}/>
+			/> */}
+			{/* <CustomBlock className={styles.custom} /> */}
 			{blocks
 				.filter(
-					({ type, blockName }) =>
-						type === 'food' && blockName !== BlockNames.oysterBar
+					({ type, blockName }) => type === 'food' && blockValues.includes(blockName) // && blockName !== BlockNames.oysterBar
 				)
 				.sort((a, b) => (a.order > b.order ? 1 : -1))
 				.map((data) => {
@@ -60,7 +62,7 @@ export default function MainList({ blocks, onInViewToggle }) {
 					);
 				})}
 			{blocks
-				.filter(({ type }) => type !== 'food')
+				.filter(({ type, blockName }) => type !== 'food' && blockValues.includes(blockName))
 				.sort((a, b) => (a.order > b.order ? 1 : -1))
 				.map((data) => {
 					const classes = data.classes
@@ -76,11 +78,11 @@ export default function MainList({ blocks, onInViewToggle }) {
 					);
 				})}
 
-			<InfoBlock
+			{/* <InfoBlock
 				data={sigs}
 				message={`*Інформація про ціни на тютюнові вироби доступна в місці торгівлі
 						Відповідно до закону України №71-VIII від 28.12.2014, продаж об'єктами господарювання роздрібної торгівлі підакцизних товарів, на які встановлюються максимально роздрібні ціни, не може здійснюватись за цінами, вищими за максимально роздрібні ціни, збільшені на суму акцизного податку з роздрібної торгівлі підакцизних товарів.`}
-			/>
+			/> */}
 		</section>
 	);
 }
