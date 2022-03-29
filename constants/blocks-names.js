@@ -3,7 +3,7 @@ export const BlockNames = {
 	cooledSeafood: 'Охолоджені морепродукти',
 	tartar: 'Тартар',
 	grilledSeafood: 'Морепродукти GRILL',
-	// bowls: 'Боули та салати',
+	bowls: 'Боули та салати',
 	plato: 'Плато',
 	seafoodPlato: 'Seafood плато',
 	mussels: 'Мідії',
