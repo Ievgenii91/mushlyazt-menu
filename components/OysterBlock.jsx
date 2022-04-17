@@ -8,6 +8,8 @@ export default function OysterBlock({
 	description,
 	className,
 }) {
+	if (!products) return null;
+
 	let sorted = products.sort((a, b) => (b.name > a.name ? -1 : 1));
 	sorted = sorted.reduce((prev, curr) => {
 		const found = prev.find((v) => v.name === curr.name);
@@ -44,10 +46,7 @@ export default function OysterBlock({
 	};
 	return (
 		<div className={classNames(styles.cardBlock, className)}>
-			<div
-				id={id}
-				className={styles.cardBlockHeader}
-			>
+			<div id={id} className={styles.cardBlockHeader}>
 				<h3>{blockName}</h3>
 				<p className={styles.cardBlockHeaderDescription}>{description}</p>
 			</div>

@@ -232,7 +232,7 @@ export default function Home({ blocks, categories }) {
 	);
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const clientId = process.env.CLIENT_ID;
 	const host = process.env.HOST;
 	const res = await fetch(
