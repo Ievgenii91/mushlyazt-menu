@@ -3,35 +3,14 @@ import Head from 'next/head';
 import Image from 'next/image';
 import MainList from '../components/MainList';
 import NavigationPanel from '../components/NavigationPanel';
-import { BlockNames } from '../constants/blocks-names';
 import useScrollTo from '../hooks/useScrollTo';
 import classNames from 'classnames';
 import styles from '../styles/Home.module.css';
 
-const MAX_BREAKFAST_HOUR = 14;
-
 export default function Home({ blocks, categories }) {
 	const [navPanelVisible, setNavPanelVisible] = useState(false);
-	const [breakfaskFirst, setBreakfaskFirst] = useState(false);
 	const [fixedHeader, setFixedHeader] = useState(false);
 	const [isFoodViewed, setFoodViewed] = useState(true);
-	const [data, setData] = useState([]);
-
-	useEffect(() => {
-		setData(
-			blocks.map((block) => {
-				if (breakfaskFirst) {
-					if (block.blockName.toLowerCase().includes('страви на сніданок')) {
-						block.order = -12;
-					}
-					if (block.blockName.toLowerCase().includes('солоденького')) {
-						block.order = -11;
-					}
-				}
-				return block;
-			})
-		);
-	}, [blocks, breakfaskFirst]);
 
 	useEffect(() => {
 		if (fixedHeader) {
@@ -40,11 +19,6 @@ export default function Home({ blocks, categories }) {
 			document.body.classList.remove('fixedHeaderWrapper');
 		}
 	}, [fixedHeader]);
-
-	useEffect(() => {
-		const hour = new Date().getHours();
-		setBreakfaskFirst(hour <= 10 || hour <= MAX_BREAKFAST_HOUR);
-	}, []);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
@@ -97,8 +71,11 @@ export default function Home({ blocks, categories }) {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Меню кафе Мушля у місті Житомир</title>
-				<meta name="description" content="QR меню кафе Мушля у Житомирі" />
+				<title>{process.env.NEXT_PUBLIC_TITLE}</title>
+				<meta
+					name="description"
+					content={`${process.env.NEXT_PUBLIC_META_DESCRIPTION}`}
+				/>
 				<meta
 					name="facebook-domain-verification"
 					content={`${process.env.NEXT_PUBLIC_FB_DOMAIN_TOKEN}`}
@@ -173,7 +150,7 @@ export default function Home({ blocks, categories }) {
 						height={60}
 					/>
 					<a
-						href={'https://www.instagram.com/mushlya.zt/'}
+						href={`${process.env.NEXT_PUBLIC_INSTAGRAM}`}
 						target={'_blank'}
 						rel="noreferrer"
 						className={styles.instagram}
@@ -185,7 +162,7 @@ export default function Home({ blocks, categories }) {
 							width={16}
 							height={16}
 						/>
-						<span>mushlya.zt</span>
+						<span>mushlya</span>
 					</a>
 				</header>
 
@@ -226,7 +203,7 @@ export default function Home({ blocks, categories }) {
 					close={toggleNavigationPanel}
 				/>
 
-				<MainList blocks={data} onInViewToggle={onInViewToggle} />
+				<MainList blocks={blocks} onInViewToggle={onInViewToggle} />
 			</main>
 		</div>
 	);
@@ -281,13 +258,10 @@ export async function getServerSideProps() {
 			availableProducts.filter(({ category }) => category === cat._id).length >
 			0
 	);
-	const registeredBlockNames = Object.values(BlockNames);
 
 	return {
 		props: {
-			categories: filteredCategories.filter(({ name }) =>
-				registeredBlockNames.includes(name)
-			),
+			categories: filteredCategories,
 			products,
 			blocks,
 		}, // will be passed to the page component as props
