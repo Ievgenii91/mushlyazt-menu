@@ -2,20 +2,26 @@ import styles from '../styles/Home.module.css';
 import CategoryBlock from './CategoryBlock';
 import OysterBlock from './OysterBlock';
 import classNames from 'classnames';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 const getClasses = (classes) => classes.split(' ').map((v) => styles[v]);
 
 export default function MainList({ blocks = [], onInViewToggle }) {
-	const mainBlockIndex = blocks.findIndex(
-		(v) => v.order === 1 && v.classes.includes('top-product')
-	);
-	const mainBlock = mainBlockIndex !== -1 ? blocks[mainBlockIndex] : null;
+	const [mainBlock, setMainBlock] = useState(null);
+	const categories = useMemo(() => {
+		const mainBlockIndex = blocks.findIndex(
+			(v) => v.order === 1 && v.classes.includes('top-product')
+		);
+		const mainBlock = mainBlockIndex !== -1 ? blocks[mainBlockIndex] : null;
+		const categories = [...blocks];
+		
+		setMainBlock(mainBlock);
 
-	const categories = useMemo(() => [...blocks], [blocks]);
-	if (mainBlockIndex >= 0) {
-		categories.splice(1, mainBlockIndex);
-	}
+		if (mainBlockIndex >= 0) {
+			categories.splice(mainBlockIndex, 1);
+		}
+		return categories;
+	}, [blocks]);
 
 	const renderCategoriesByType = useCallback(
 		(filterType) =>
